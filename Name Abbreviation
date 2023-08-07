@@ -1,0 +1,33 @@
+https://www.youtube.com/watch?v=0j2apucTv2o
+
+import java.util.Scanner;
+
+public class NameAbbreviation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your full name: ");
+        String fullName = scanner.nextLine();
+
+        String[] nameParts = fullName.split(" ");
+        int numOfParts = nameParts.length;
+
+        String abbreviation = "";
+
+        if (numOfParts >= 1) {
+            abbreviation += nameParts[0].charAt(0) + ".";
+        }
+
+        for (int i = 1; i < numOfParts - 1; i++) {
+            abbreviation += nameParts[i].charAt(0) + ".";
+        }
+
+        if (numOfParts >= 2) {
+            abbreviation += nameParts[numOfParts - 1];
+        }
+
+        System.out.println("Abbreviated name: " + abbreviation);
+
+        scanner.close();
+    }
+}
