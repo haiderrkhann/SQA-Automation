@@ -1,0 +1,62 @@
+package webpage_browser;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class browser {
+public static void main(String[] args) {
+		
+		 // Create a new instance of ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open the specified URL
+        driver.get("https://omayo.blogspot.in/");
+
+        // Find the text field element by its ID and send keys
+        WebElement textField = driver.findElement(By.id("ta1"));
+        textField.sendKeys("It's Haider Khan here");
+
+        // Find the text field element using XPath and print its text
+        WebElement textField2 = driver.findElement(By.xpath("//textarea[@rows='10' and @cols='30']"));
+        System.out.print("Text written: " + textField2.getText());
+
+        // Clear the second text field and send new keys
+        textField2.clear();
+        textField2.sendKeys("I am an SQA bootcamp intern");
+
+        // Find the username input element using XPath and send keys
+        WebElement username = driver.findElement((By.xpath("//form[@name='form1']//input[@type='text']")));
+        username.sendKeys("Haider Khan");
+
+        // Find the password input element using XPath and send keys
+        WebElement password = driver.findElement((By.xpath("//form[@name='form1']//input[@type='password']")));
+        password.sendKeys("1234xyZ!");
+
+        // Find the login button element using XPath and click it
+        WebElement login = driver.findElement(By.xpath("//button[@type='button']"));
+        login.click();
+
+        // Switch back to the default content
+        driver.switchTo().defaultContent();
+
+        // Switch to "iframe2" frame
+        driver.switchTo().frame("iframe2");
+        
+        // Switch back to the default content again
+        driver.switchTo().defaultContent();
+
+        // Find the user name input element within "iframe2" and send keys
+        WebElement username2 = driver.findElement(By.xpath("//input[@name='userid']"));
+        username2.sendKeys("Haider Khan");
+
+        // Find the password input element within "iframe2" and send keys
+        WebElement password2 = driver.findElement(By.xpath("//input[@type='password']"));
+        password2.sendKeys("1234xyZ!");
+
+        // Find the login button element within "iframe2" and click it
+        WebElement login2 = driver.findElement(By.xpath("//input[@type='button' and @value='Login']"));
+        login2.click();
+
+	}
+
+}
