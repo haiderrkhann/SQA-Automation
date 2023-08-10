@@ -1,0 +1,61 @@
+package webpage_browser;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class webpage_browser2 
+{
+
+	public static void main(String[] args) 
+	{
+		 WebDriver driver = new ChromeDriver();
+
+	        // Open the specified URL
+	        driver.get("https://omayo.blogspot.in/");
+
+	        // Find the text field element by its ID and send keys
+	        WebElement textField = driver.findElement(By.id("ta1"));
+	        textField.sendKeys("It's Haider Khan here");
+	        
+	        String inputText = textField.getAttribute("value");
+	        String actualText = "\n"
+	        		+ "It's Haider Khan here";
+	        if(inputText.equals(actualText))
+	        {
+	        	System.out.println("Test Passed!");
+	        }
+	        else 
+	        {
+	            System.out.println("Test Failed!");
+	        }
+	        
+	        // Find the text field element using XPath and print its text
+	        WebElement textField2 = driver.findElement(By.xpath("//textarea[@rows='10' and @cols='30']"));
+	        System.out.print("Text written: " + textField2.getText());
+
+	        // Clear the second text field and send new keys
+	        textField2.clear();
+	        String ExpectedtextEmpty=textField2.getAttribute("value");;
+	        String ActualTextempty ="";
+	        if(ActualTextempty.equals(ExpectedtextEmpty))
+	        {
+	        	
+	        }
+	        
+	        textField2.sendKeys("I am an SQA bootcamp intern");
+	        
+	        String inputText3 = textField2.getAttribute("value");
+	        String actualText3 = "I am an SQA bootcamp intern"+ "\n";
+	        if(inputText3.equals(actualText3))
+	        {
+	        	System.out.println("\n"+"Test Passed!");
+	        }
+	        else 
+	        {
+	            System.out.println("\n"+"Test Failed!");
+	        }
+	}
+
+}
