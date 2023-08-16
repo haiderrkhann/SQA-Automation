@@ -40,7 +40,7 @@ public class lab4
 	public void AddCustomer()
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement addcustomer = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='addCust()']")));
+                WebElement addcustomer = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='addCust()']")));
 		addcustomer.click();
 	}
 	@Test(priority=4)
@@ -89,8 +89,71 @@ public class lab4
 		home.click();
 	}
 	
-	
-	
-		
-	
-    }
+	@Test(priority=6)
+	public void CustomerLogin()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement customerlogin = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='customert()']")));
+                customerlogin.click(); 
+
+                WebElement customername = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[@name='userSelect']")));
+		Select customerName = new Select(customerName);
+		customerName.selectByVisibleText("Hermoine Granger");
+
+	        WebElement login = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+                login.click();
+        }
+        @Test(priority=7)        
+        public void Deposit_Amount()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement deposit = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='deposit()']")));
+                deposit.click();
+
+                WebElement depositAmount = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='amount']")));
+                depositAmount.sendKeys("7000");
+
+                WebElement depositButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+                depositButton.click();
+
+        }   
+         @Test(priority=8)        
+         public void Withdraw_Amount()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement withdraw = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='withdrawl()']")));
+                withdraw.click();
+
+                WebElement withdrawAmount = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@placeholder='amount']")));
+                withdrawAmount.sendKeys("2000");
+
+                WebElement withdrawButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+                withdrawButton.click();
+        }
+        @Test(priority=9)        
+        public void Transaction_button()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement transactionbutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='transactions()']")));
+                transactionbutton.click();
+
+                WebElement resetbutton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='reset()']")));
+                resetbutton.click();
+
+                WebElement logout = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='byebye()']")));
+                logout.click();
+
+                WebElement home = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='home()']")));
+		home.click();
+
+                WebElement login = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='manager()']")));
+		login.click();
+
+                WebElement customer = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='showCust()']")));
+		customer.click();
+
+                WebElement delete = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@ng-click='deleteCust(cust)']")));
+		delete.click();
+
+        }
+}
